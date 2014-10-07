@@ -1,21 +1,16 @@
-<div class='panel panel-default book affix'>
-  {{#if isEditing}}
-  <div class='panel-heading'>
-    <div class='panel-title'>
-      <i class="glyphicon glyphicon-ban-circle pull-right" {{action 'toggleEditing'}}></i>
-      <h4>{{title}}</h4>
-    </div>
+<div class='panel-heading'>
+  <div class='panel-title'>
+    <i {{bind-attr class=":glyphicon :pull-right isEditing:glyphicon-ban-circle:glyphicon-edit"}} {{action 'toggleEditing'}}></i>
+    <h4>{{title}}</h4>
   </div>
+</div>
+
+{{#unless isEditing}}
   <div class='panel-body'>
+    <p class='text-muted'>by {{author}}</p>
     <p>{{description}}</p>
   </div>
-  {{else}}
-  <div class='panel-heading'>
-    <div class='panel-title'>
-      <i class="glyphicon glyphicon-edit pull-right" {{action 'toggleEditing'}}></i>
-      <h4>{{title}}</h4>
-    </div>
-  </div>
+{{else}}
   <div class='panel-body'>
     <form class="form form-vertical" {{action 'submit' on='submit'}}>
       <div class="control-group">
@@ -47,5 +42,4 @@
       </div>
     </form>
   </div>
-  {{/if}}
-</div>
+{{/unless}}
