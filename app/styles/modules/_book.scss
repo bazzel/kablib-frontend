@@ -1,0 +1,14 @@
+.book {
+  &.affix {
+    margin-right: $grid-gutter-width /2;
+  }
+  &.panel {
+    .panel-title {
+      h4 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
