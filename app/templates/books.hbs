@@ -16,7 +16,7 @@
           <li><a href="#"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
         </ul>
         </li>
-        <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#menu2">
+        <li class="nav-header"> <a href="javascript: void(0);" data-toggle="collapse" data-target="#menu2">
           <h5>Reports <i class="glyphicon glyphicon-chevron-right"></i></h5>
         </a>
 
@@ -34,7 +34,7 @@
         </ul>
         </li>
         <li class="nav-header">
-        <a href="#" data-toggle="collapse" data-target="#menu3">
+        <a href="javascript: void(0);" data-toggle="collapse" data-target="#menu3">
           <h5>Social Media <i class="glyphicon glyphicon-chevron-right"></i></h5>
         </a>
 
@@ -62,7 +62,9 @@
       </table>
     </div>
     <div class="col-md-3 column">
-      {{outlet}}
+      <div class='affix'>
+        {{outlet}}
+      </div>
     </div>
   </div>
 </div>
