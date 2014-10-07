@@ -1,11 +1,51 @@
 <div class='panel panel-default book affix'>
+  {{#if isEditing}}
   <div class='panel-heading'>
     <div class='panel-title'>
-      <i class="glyphicon glyphicon-edit pull-right"></i>
+      <i class="glyphicon glyphicon-ban-circle pull-right" {{action 'toggleEditing'}}></i>
       <h4>{{title}}</h4>
     </div>
   </div>
   <div class='panel-body'>
-  <p>{{description}}</p>
+    <p>{{description}}</p>
   </div>
+  {{else}}
+  <div class='panel-heading'>
+    <div class='panel-title'>
+      <i class="glyphicon glyphicon-edit pull-right" {{action 'toggleEditing'}}></i>
+      <h4>{{title}}</h4>
+    </div>
+  </div>
+  <div class='panel-body'>
+    <form class="form form-vertical" {{action 'submit' on='submit'}}>
+      <div class="control-group">
+        <label for='name'>Name</label>
+        <div class="controls">
+          {{input value=title id='name' class="form-control" placeholder="Enter Title" autofocus=true}}
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for='description'>Description</label>
+        <div class="controls">
+          {{textarea value=description id='description' class="form-control" placeholder="Enter Description" autofocus=true}}
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for='author'>Author</label>
+        <div class="controls">
+          {{input value=author id='author' class="form-control" placeholder="Enter Author"}}
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label></label>
+        <div class="controls">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {{/if}}
 </div>
