@@ -12,8 +12,14 @@ export default Ember.ObjectController.extend({
          _this = this;
 
       book.save().then(function() {
+        _this.clearValidationErrors();
         _this.set('isEditing', false);
+      },function(reason) {
+        _this.set('validationErrors', reason.errors);
       });
     }
+  },
+  clearValidationErrors: function() {
+    this.set('validationErrors', null);
   }
 });
