@@ -1,0 +1,15 @@
+table.books {
+  table-layout: fixed;
+  cursor: pointer;
+  td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &.small {
+
+    }
+    &.medium {
+      width: 150px;
+    }
+  }
+}
