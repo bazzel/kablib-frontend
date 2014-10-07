@@ -26,4 +26,13 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');
 
+// https://github.com/abuiles/rails-csrf:
+app.import('bower_components/rails-csrf/dist/named-amd/main.js', {
+  exports: {
+    'rails-csrf': [
+      'setCsrfUrl'
+    ]
+  }
+});
+
 module.exports = mergeTrees([app.toTree(), extraAssets]);

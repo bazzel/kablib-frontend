@@ -6,7 +6,7 @@ export default Ember.Route.extend({
       var book = this.currentModel;
       if (book.get('isDirty')) {
         book.rollback();
-      };
+      }
       this.controller.set('isEditing', false);
     }
   }
