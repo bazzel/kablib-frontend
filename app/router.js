@@ -10,6 +10,8 @@ Router.map(function() {
     this.route('show', { path: ':book_id'});
   });
   this.route('users');
+  this.route('login');
+  this.route('authenticatedRoute');
 });
 
 export default Router;

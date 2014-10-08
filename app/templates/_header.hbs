@@ -16,10 +16,10 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-        <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Patrick <span class="caret"></span></a>
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> {{currentUser.firstName}} <span class="caret"></span></a>
         <ul id="g-account-menu" class="dropdown-menu" role="menu">
           <li><a href="#">My Profile</a></li>
-          <li><a href="#">Switch User</a></li>
+          {{#link-to 'login' tagName='li'}}<a href='javascript:void(0);'>Switch User</a>{{/link-to}}
         </ul>
         </li>
       </ul>

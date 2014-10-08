@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  beforeModel: function(transition) {
-    this.csrf.fetchToken();
+  model: function() {
+    return this.store.find('user');
   }
 });

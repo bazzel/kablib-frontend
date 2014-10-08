@@ -1,0 +1,18 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-6 col-md-offset-3'>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>Choose a User</h4></div>
+        <div class="panel-body">
+          <div class="list-group">
+            {{#each}}
+            <a hef='javascript://' class='list-group-item' {{action 'login' this}}>
+              <h4 class='list-group-item-heading'>{{gravatar-image email=email size='46'}} {{fullName}}</h4>
+            </a>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

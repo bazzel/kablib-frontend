@@ -8,7 +8,6 @@ export default Ember.Component.extend({
   attributeBindings: ['src'],
   src: function() {
     var email = this.get('email');
-    console.log(email);
     var size = this.get('size');
 
     // No import for md5, it's a global called `md5`
