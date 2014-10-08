@@ -11,6 +11,12 @@
             <a hef='javascript://' class='list-group-item' {{action 'login' this}}>
               <h4 class='list-group-item-heading'>{{gravatar-image email=email size='46'}} {{fullName}}</h4>
             </a>
+            {{else}}
+            {{#if  search}}
+              <p class='text-muted'>No '{{search}}' here...</p>
+            {{else}}
+              <p class='text-muted'>Oops, no users yet, so not much to do...</p>
+            {{/if}}
             {{/each}}
           </div>
         </div>
