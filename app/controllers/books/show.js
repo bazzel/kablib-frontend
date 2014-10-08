@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+  needs: ['login'],
+  currentUser: Ember.computed.alias('controllers.login.currentUser'),
   isEditing: false,
   actions: {
     toggleEditing: function() {
@@ -16,6 +18,16 @@ export default Ember.ObjectController.extend({
         _this.set('isEditing', false);
       },function(reason) {
         _this.set('validationErrors', reason.errors);
+      });
+    },
+    checkOut: function() {
+      var book = this.model;
+      var borrow = this.store.createRecord('borrow', {
+        book: book,
+        user: this.get('currentUser')
+      });
+      borrow.save().then(function() {
+        book.reload()
       });
     }
   },

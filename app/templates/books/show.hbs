@@ -9,6 +9,11 @@
 <div class='panel-body'>
   <p class='text-muted'>by {{author}}</p>
   <p>{{description}}</p>
+  {{#if isCheckedOut}}
+    <div class="alert alert-warning" role="alert">This book is borrowed.</div>
+  {{else}}
+    <button {{action 'checkOut'}}type="button" class="btn btn-default">Check Out</button>
+  {{/if}}
 </div>
 {{else}}
 <div class='panel-body'>

@@ -54,6 +54,9 @@
             {{author}}
           </td>
           <td>
+            {{#if isCheckedOut}}
+            <span class="label label-warning">Borrowed</span>
+            {{/if}}
             {{title}} - <span class='text-muted'>{{description}}</span>
           </td>
         {{/link-to}}
