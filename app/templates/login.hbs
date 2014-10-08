@@ -2,10 +2,12 @@
   <div class='row'>
     <div class='col-md-6 col-md-offset-3'>
       <div class="panel panel-default">
-        <div class="panel-heading"><h4>Choose a User</h4></div>
+        <div class="panel-heading">
+          {{input value=search class='form-control' placeholder='Search'}}
+        </div>
         <div class="panel-body">
           <div class="list-group">
-            {{#each}}
+            {{#each filteredContent}}
             <a hef='javascript://' class='list-group-item' {{action 'login' this}}>
               <h4 class='list-group-item-heading'>{{gravatar-image email=email size='46'}} {{fullName}}</h4>
             </a>
