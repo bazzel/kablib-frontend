@@ -27,10 +27,22 @@ export default Ember.ObjectController.extend({
         user: this.get('currentUser')
       });
       borrow.save().then(function() {
-        book.reload()
+        book.set('latestBorrow', borrow);
+      });
+    },
+    returnBook: function() {
+      var book = this.model;
+      var borrow = book.get('latestBorrow');
+
+      borrow.set('finishedOn', new Date());
+      borrow.save().then(function() {
+        book.set('latestBorrow', null);
       });
     }
   },
+  isCheckedOutByCurrentUser: function() {
+    return this.get('borrowedBy') === this.get('currentUser');
+  }.property('currentUser', 'borrowedBy'),
   clearValidationErrors: function() {
     this.set('validationErrors', null);
   }

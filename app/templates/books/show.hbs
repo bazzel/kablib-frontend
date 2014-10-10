@@ -10,7 +10,16 @@
   <p class='text-muted'>by {{author}}</p>
   <p>{{description}}</p>
   {{#if isCheckedOut}}
-    <div class="alert alert-warning" role="alert">This book is borrowed.</div>
+    {{#if isCheckedOutByCurrentUser}}
+      <div class="alert alert-warning clearfix" role="alert">
+        You borrowed this book.
+        <button {{action 'returnBook'}}type="button" class="btn btn-default pull-right">Return</button>
+      </div>
+    {{else}}
+      <div class="alert alert-warning" role="alert">
+        {{borrowedBy.fullName}} borrowed this book.
+      </div>
+    {{/if}}
   {{else}}
     <button {{action 'checkOut'}}type="button" class="btn btn-default">Check Out</button>
   {{/if}}
