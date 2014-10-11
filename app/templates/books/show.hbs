@@ -8,6 +8,11 @@
 {{#unless isEditing}}
 <div class='panel-body'>
   <p class='text-muted'>by {{author}}</p>
+  <p>
+    {{#each tags}}
+      <span class="label label-default">{{this}}</span>
+    {{/each}}
+  </p>
   <p>{{description}}</p>
   {{#if isCheckedOut}}
     {{#if isCheckedOutByCurrentUser}}

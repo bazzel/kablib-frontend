@@ -4,6 +4,9 @@ export default Ember.ObjectController.extend({
   needs: ['login'],
   currentUser: Ember.computed.alias('controllers.login.currentUser'),
   isEditing: false,
+  tags: function() {
+    return this.get('tagList').split(',');
+  }.property('tagList'),
   actions: {
     toggleEditing: function() {
       this.toggleProperty('isEditing');

@@ -48,7 +48,7 @@
     <div class="col-md-7 column">
       <table class="table table-hover books">
         <tbody>
-        {{#each}}
+        {{#each itemController='books/show'}}
         {{#link-to 'books.show' this tagName='tr' classNameBindings='isDirty:warning'}}
           <td class='medium'>
             {{author}}
@@ -57,7 +57,13 @@
             {{#if isCheckedOut}}
             <span class="label label-warning">Borrowed</span>
             {{/if}}
-            {{title}} - <span class='text-muted'>{{description}}</span>
+            {{title}} -
+
+            {{#each tags}}
+              <span class="label label-default">{{this}}</span>
+            {{/each}}
+
+            <span class='text-muted'>{{description}}</span>
           </td>
         {{/link-to}}
         {{/each}}
