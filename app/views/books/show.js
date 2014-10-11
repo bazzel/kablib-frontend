@@ -8,18 +8,17 @@ export default Ember.View.extend({
       _this.$().affix();
     });
   }.on('didInsertElement'),
-  doSelectize: function() {
-    var _this = this;
+  scheduleSelectize: function() {
+    Ember.run.scheduleOnce('afterRender', this, this.applySelectize);
+  }.observes('controller.isEditing'),
+  applySelectize: function() {
+    var tags = this.$('#tags');
 
-    Ember.run.schedule('afterRender', function() {
-      var tags = _this.$('#tags');
-
-      if (tags) {
-        tags.selectize({
-          delimiter: ',',
-          create: true
-        })
-      }
-    })
-  }.observes('controller.isEditing')
+    if (tags) {
+      tags.selectize({
+        delimiter: ',',
+        create: true
+      })
+    }
+  }
 });
