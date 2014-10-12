@@ -19,7 +19,7 @@ export default Ember.ObjectController.extend({
       book.save().then(function() {
         _this.clearValidationErrors();
         _this.set('isEditing', false);
-      },function(reason) {
+      }, function(reason) {
         _this.set('validationErrors', reason.errors);
       });
     },

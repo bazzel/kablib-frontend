@@ -3,6 +3,10 @@ import AuthenticatedRoute from './authenticated-route';
 
 export default AuthenticatedRoute.extend({
   model: function() {
-    return this.store.find('book');
+    this.store.find('book');
+
+    return this.store.filter('book', function(book) {
+      return !book.get('isNew');
+    });
   }
 });

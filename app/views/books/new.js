@@ -7,7 +7,7 @@ export default Ember.View.extend({
   }.on('didInsertElement'),
   scheduleSelectize: function() {
     Ember.run.scheduleOnce('afterRender', this, 'applySelectize');
-  }.observes('controller.isEditing'),
+  }.on('didInsertElement', 'controller.isEditing'),
   applyPositioning: function() {
     this.$().affix();
   },
