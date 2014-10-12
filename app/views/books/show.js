@@ -9,7 +9,7 @@ export default Ember.View.extend({
     });
   }.on('didInsertElement'),
   scheduleSelectize: function() {
-    Ember.run.scheduleOnce('afterRender', this, this.applySelectize);
+    Ember.run.scheduleOnce('afterRender', this, 'applySelectize');
   }.observes('controller.isEditing'),
   applySelectize: function() {
     var tags = this.$('#tags');
