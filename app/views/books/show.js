@@ -18,7 +18,7 @@ export default Ember.View.extend({
       tags.selectize({
         delimiter: ',',
         create: true
-      })
+      });
     }
   }
 });
