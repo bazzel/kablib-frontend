@@ -1,6 +1,7 @@
 <div class='panel-heading'>
   <div class='panel-title'>
     <i {{bind-attr class=":glyphicon :pull-right isEditing:glyphicon-ban-circle:glyphicon-edit"}} {{action 'toggleEditing'}}></i>
+    <i {{action 'delete'}} class='glyphicon pull-right glyphicon-trash text-muted'>&nbsp;</i>
     <h4>{{title}}</h4>
   </div>
 </div>

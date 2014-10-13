@@ -41,6 +41,13 @@ export default Ember.ObjectController.extend({
       borrow.save().then(function() {
         book.set('latestBorrow', null);
       });
+    },
+    delete: function() {
+      var _this = this;
+
+      this.model.destroyRecord().then(function() {
+        _this.transitionToRoute('books');
+      });
     }
   },
   isCheckedOutByCurrentUser: function() {
