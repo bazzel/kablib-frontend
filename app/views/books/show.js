@@ -5,20 +5,7 @@ export default Ember.View.extend({
   schedulePositioning: function() {
     Ember.run.scheduleOnce('afterRender', this, 'applyPositioning');
   }.on('didInsertElement'),
-  scheduleSelectize: function() {
-    Ember.run.scheduleOnce('afterRender', this, 'applySelectize');
-  }.observes('controller.isEditing'),
   applyPositioning: function() {
     this.$().affix();
-  },
-  applySelectize: function() {
-    var tags = this.$('#tags');
-
-    if (tags) {
-      tags.selectize({
-        delimiter: ',',
-        create: true
-      });
-    }
   }
 });

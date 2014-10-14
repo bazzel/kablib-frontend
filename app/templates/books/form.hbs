@@ -1,0 +1,50 @@
+<form class="form form-vertical" {{action 'submit' on='submit'}}>
+  <div {{bind-attr class=':form-group validationErrors.title:has-error'}}>
+    <label for='title'>Title</label>
+    <div class="controls">
+      {{input value=title id='title' class="form-control" placeholder="Enter Title" autofocus=true}}
+      {{#if validationErrors.title}}
+      <div class='control-label'>{{validationErrors.title}}</div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label for='description'>Description</label>
+    <div class="controls">
+      {{textarea value=description id='description' class="form-control" placeholder="Enter Description" autofocus=true}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label for='author'>Author</label>
+    <div class="controls">
+      {{input value=author id='author' class="form-control" placeholder="Enter Author"}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="photo">Cover image</label>
+    {{#if coverImage}}
+    <div class='cover-image-preview'>
+      <img {{bind-attr src=coverImage}} class="cover-image"/>
+      <a {{action 'removeCoverImage'}} class='btn btn-default'>Remove</a>
+    </div>
+    {{/if}}
+    {{view 'upload-file' file=coverImage}}
+  </div>
+
+  <div class="control-group">
+    <label for='tags'>Tags</label>
+    <div class="controls">
+      {{input value=tagList id='tags' class="form-control" placeholder="Enter Tags"}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label></label>
+    <div class="controls">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </div>
+</form>
