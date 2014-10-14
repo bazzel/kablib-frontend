@@ -8,7 +8,12 @@
 
 {{#unless isEditing}}
 <div class='panel-body'>
-  <p class='text-muted'>by {{author}}</p>
+  {{#if coverImage}}
+    <img {{bind-attr src=coverImage}} class='cover-image'/>
+  {{/if}}
+  {{#if author}}
+    <p class='text-muted'>by {{author}}</p>
+  {{/if}}
   <p>
     {{#each tags}}
       <span class="label label-default">{{this}}</span>
@@ -55,6 +60,17 @@
       <div class="controls">
         {{input value=author id='author' class="form-control" placeholder="Enter Author"}}
       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="photo">Cover image</label>
+      {{#if coverImage}}
+      <div class='cover-image-preview'>
+        <img {{bind-attr src=coverImage}} class="cover-image"/>
+        <a {{action 'removeCoverImage'}} class='btn btn-default'>Remove</a>
+      </div>
+      {{/if}}
+      {{view 'upload-file' file=coverImage}}
     </div>
 
     <div class="control-group">

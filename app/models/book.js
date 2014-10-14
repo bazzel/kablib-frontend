@@ -6,6 +6,7 @@ export default DS.Model.extend({
   description:   DS.attr(),
   author:        DS.attr(),
   tagList:       DS.attr(),
+  coverImage:    DS.attr(),
   latestBorrow:  DS.belongsTo('borrow'),
   borrowedBy:    Ember.computed.alias('latestBorrow.user'),
   isCheckedOut:  Ember.computed.bool('latestBorrow')

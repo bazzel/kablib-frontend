@@ -12,6 +12,9 @@ export default Ember.ObjectController.extend({
       }, function(reason) {
         _this.set('validationErrors', reason.errors);
       });
+    },
+    removeCoverImage: function() {
+      this.model.set('coverImage', null);
     }
   }
 });

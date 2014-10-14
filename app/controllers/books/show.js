@@ -48,6 +48,9 @@ export default Ember.ObjectController.extend({
       this.model.destroyRecord().then(function() {
         _this.transitionToRoute('books');
       });
+    },
+    removeCoverImage: function() {
+      this.model.set('coverImage', null);
     }
   },
   isCheckedOutByCurrentUser: function() {
