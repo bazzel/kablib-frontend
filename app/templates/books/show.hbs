@@ -1,13 +1,26 @@
 <div class='panel-heading'>
   <div class='panel-title'>
-    <i {{bind-attr class=":glyphicon :pull-right isEditing:glyphicon-ban-circle:glyphicon-edit"}} {{action 'toggleEditing'}}></i>
-    <i {{action 'delete'}} class='glyphicon pull-right glyphicon-trash text-muted'>&nbsp;</i>
+    {{#unless isCheckedOut}}
+      <button {{action 'checkOut'}}type="button" class="btn btn-default pull-right">Check Out</button>
+    {{/unless}}
     <h4>{{title}}</h4>
   </div>
 </div>
 
 {{#unless isEditing}}
 <div class='panel-body'>
+  {{#if isCheckedOut}}
+    {{#if isCheckedOutByCurrentUser}}
+      <div class="alert alert-warning clearfix" role="alert">
+        You borrowed this book.
+        <button {{action 'returnBook'}}type="button" class="btn btn-default pull-right">Return</button>
+      </div>
+    {{else}}
+      <div class="alert alert-warning" role="alert">
+        {{borrowedBy.fullName}} borrowed this book.
+      </div>
+    {{/if}}
+  {{/if}}
   {{#if coverImage}}
     <img {{bind-attr src=coverImage}} class='cover-image'/>
   {{/if}}
@@ -20,20 +33,9 @@
     {{/each}}
   </p>
   <p class='clearfix'>{{description}}</p>
-  {{#if isCheckedOut}}
-    {{#if isCheckedOutByCurrentUser}}
-      <div class="alert alert-warning clearfix" role="alert">
-        You borrowed this book.
-        <button {{action 'returnBook'}}type="button" class="btn btn-default pull-right">Return</button>
-      </div>
-    {{else}}
-      <div class="alert alert-warning" role="alert">
-        {{borrowedBy.fullName}} borrowed this book.
-      </div>
-    {{/if}}
-  {{else}}
-    <button {{action 'checkOut'}}type="button" class="btn btn-default">Check Out</button>
-  {{/if}}
+  <hr/>
+  <button {{action 'toggleEditing'}} type="button" class="btn btn-default">Edit</button>
+  <button {{action 'delete'}} type="button" class="btn btn-danger pull-right">Delete</button>
 </div>
 {{else}}
 <div class='panel-body'>
