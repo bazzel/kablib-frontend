@@ -6,6 +6,9 @@ export default DS.Model.extend({
   description:   DS.attr(),
   author:        DS.attr(),
   tagList:       DS.attr(),
+  tags:          function() {
+    return this.get('tagList').split(', ');
+  }.property('tagList'),
   coverImage:    DS.attr(),
   latestBorrow:  DS.belongsTo('borrow'),
   borrowedBy:    Ember.computed.alias('latestBorrow.user'),

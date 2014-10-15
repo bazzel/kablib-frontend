@@ -20,10 +20,8 @@ export default Ember.ArrayController.extend({
     var books = this.model;
 
     if (tag) {
-      // filter by 'bar' must not show 'fooBar' or 'barBaz'
-      var re = new RegExp('\\b'+tag+'\\b', 'gi');
       books = books.filter(function(book) {
-        return re.test(book.get('tagList'));
+        return book.get('tags').contains(tag);
       });
     }
 
