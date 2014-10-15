@@ -1,7 +1,7 @@
 <div class='panel-heading'>
   <div class='panel-title'>
     {{#unless isCheckedOut}}
-      <button {{action 'checkOut'}}type='button' class='btn btn-default pull-right'>Check Out</button>
+      <button {{action 'checkOut'}} type='button' class='btn btn-default pull-right'>Check Out</button>
     {{/unless}}
     <h4>{{title}}</h4>
   </div>
@@ -13,7 +13,7 @@
     {{#if isCheckedOutByCurrentUser}}
       <div class='alert alert-warning clearfix'>
         You borrowed this book.
-        <button {{action 'returnBook'}}type='button' class='btn btn-default pull-right'>Return</button>
+        <button {{action 'returnBook'}} type='button' class='btn btn-default pull-right'>Return</button>
       </div>
     {{else}}
       <div class='alert alert-warning'>
