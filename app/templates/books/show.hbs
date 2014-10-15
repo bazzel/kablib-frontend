@@ -1,7 +1,7 @@
 <div class='panel-heading'>
   <div class='panel-title'>
     {{#unless isCheckedOut}}
-      <button {{action 'checkOut'}}type="button" class="btn btn-default pull-right">Check Out</button>
+      <button {{action 'checkOut'}}type='button' class='btn btn-default pull-right'>Check Out</button>
     {{/unless}}
     <h4>{{title}}</h4>
   </div>
@@ -11,12 +11,12 @@
 <div class='panel-body'>
   {{#if isCheckedOut}}
     {{#if isCheckedOutByCurrentUser}}
-      <div class="alert alert-warning clearfix" role="alert">
+      <div class='alert alert-warning clearfix'>
         You borrowed this book.
-        <button {{action 'returnBook'}}type="button" class="btn btn-default pull-right">Return</button>
+        <button {{action 'returnBook'}}type='button' class='btn btn-default pull-right'>Return</button>
       </div>
     {{else}}
-      <div class="alert alert-warning" role="alert">
+      <div class='alert alert-warning'>
         {{borrowedBy.firstName}} borrowed this book.
       </div>
     {{/if}}
@@ -29,13 +29,13 @@
   {{/if}}
   <p>
     {{#each tags}}
-      <span class="label label-default">{{this}}</span>
+      <span class='label label-default'>{{this}}</span>
     {{/each}}
   </p>
   <p class='clearfix'>{{description}}</p>
   <hr/>
-  <button {{action 'toggleEditing'}} type="button" class="btn btn-default">Edit</button>
-  <button {{action 'delete'}} type="button" class="btn btn-danger pull-right">Delete</button>
+  <button {{action 'toggleEditing'}} type='button' class='btn btn-default'>Edit</button>
+  <button {{action 'openModal' 'books/confirmDeletion' this}} type='button' class='btn btn-danger pull-right'>Delete</button>
 </div>
 {{else}}
 <div class='panel-body'>

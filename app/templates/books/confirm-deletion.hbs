@@ -1,0 +1,6 @@
+{{#modal-dialog title='Are you ABSOLUTELY sure?' submitLabel='I understand the consequences, delete this book' submit='deleteBook' cancel='closeModal'}}
+  <div class='alert alert-warning'>Unexpected things will happen if you don't read this!</div>
+  <p>This action <strong>CANNOT</strong> be undone. This will permanently delete the book <strong>'{{title}}'</strong>.</p>
+  <p>Please type in the book title to confirm.</p>
+    {{input value=confirmation class='form-control' autofocus=true}}
+{{/modal-dialog}}

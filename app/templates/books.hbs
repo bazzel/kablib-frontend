@@ -1,13 +1,13 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2 column">
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-2 column'>
       {{#link-to 'books.new' class='btn btn-primary'}}Add a Book{{/link-to}}
       <hr/>
-      <ul class="list-unstyled">
-        <li class="nav-header"> <a href="javascript: void(0);" data-toggle="collapse" data-target="#userMenu">
-          <h5>Tags <i class="glyphicon glyphicon-chevron-down"></i></h5>
+      <ul class='list-unstyled'>
+        <li class='nav-header'> <a href='javascript://;' data-toggle='collapse' data-target='#userMenu'>
+          <h5>Tags <i class='glyphicon glyphicon-chevron-down'></i></h5>
         </a>
-        <ul class="list-unstyled collapse in" id="userMenu">
+        <ul class='list-unstyled collapse in' id='userMenu'>
           {{#each uniqueTags}}
           {{#link-to 'books' (query-params tag=this) tagName='li'}}<a href='javascript://'>{{this}}</a>{{/link-to}}
           {{else}}
@@ -15,37 +15,37 @@
           {{/each}}
         </ul>
         </li>
-        <li class="nav-header"> <a href="javascript: void(0);" data-toggle="collapse" data-target="#menu2">
-          <h5>Reports <i class="glyphicon glyphicon-chevron-right"></i></h5>
+        <li class='nav-header'> <a href='javascript://;' data-toggle='collapse' data-target='#menu2'>
+          <h5>Reports <i class='glyphicon glyphicon-chevron-right'></i></h5>
         </a>
 
-        <ul class="list-unstyled collapse" id="menu2">
-          <li><a href="#">Information &amp; Stats</a>
+        <ul class='list-unstyled collapse' id='menu2'>
+          <li><a href='#'>Information &amp; Stats</a>
           </li>
-          <li><a href="#">Views</a>
+          <li><a href='#'>Views</a>
           </li>
-          <li><a href="#">Requests</a>
+          <li><a href='#'>Requests</a>
           </li>
-          <li><a href="#">Timetable</a>
+          <li><a href='#'>Timetable</a>
           </li>
-          <li><a href="#">Alerts</a>
+          <li><a href='#'>Alerts</a>
           </li>
         </ul>
         </li>
-        <li class="nav-header">
-        <a href="javascript: void(0);" data-toggle="collapse" data-target="#menu3">
-          <h5>Social Media <i class="glyphicon glyphicon-chevron-right"></i></h5>
+        <li class='nav-header'>
+        <a href='javascript://;' data-toggle='collapse' data-target='#menu3'>
+          <h5>Social Media <i class='glyphicon glyphicon-chevron-right'></i></h5>
         </a>
 
-        <ul class="list-unstyled collapse" id="menu3">
-          <li><a href="#"><i class="glyphicon glyphicon-circle"></i> Facebook</a></li>
-          <li><a href="#"><i class="glyphicon glyphicon-circle"></i> Twitter</a></li>
+        <ul class='list-unstyled collapse' id='menu3'>
+          <li><a href='#'><i class='glyphicon glyphicon-circle'></i> Facebook</a></li>
+          <li><a href='#'><i class='glyphicon glyphicon-circle'></i> Twitter</a></li>
         </ul>
         </li>
       </ul>
     </div>
-    <div class="col-md-7 column">
-      <table class="table table-hover books">
+    <div class='col-md-7 column'>
+      <table class='table table-hover books'>
         <tbody>
         {{#each filteredContent itemController='books/show'}}
         {{#link-to 'books.show' this tagName='tr' classNameBindings='isDirty:warning'}}
@@ -54,12 +54,12 @@
           </td>
           <td>
             {{#if isCheckedOut}}
-            <span class="label label-warning">Borrowed</span>
+            <span class='label label-warning'>Borrowed</span>
             {{/if}}
             {{title}} -
 
             {{#each tags}}
-              <span class="label label-default">{{this}}</span>
+              <span class='label label-default'>{{this}}</span>
             {{/each}}
 
             <span class='text-muted'>{{description}}</span>
@@ -69,7 +69,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-3 column">
+    <div class='col-md-3 column'>
       {{outlet}}
     </div>
   </div>
