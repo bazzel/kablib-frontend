@@ -12,5 +12,6 @@ export default DS.Model.extend({
   coverImage:    DS.attr(),
   latestBorrow:  DS.belongsTo('borrow'),
   borrowedBy:    Ember.computed.alias('latestBorrow.user'),
-  isCheckedOut:  Ember.computed.bool('latestBorrow')
+  isCheckedOut:  Ember.computed.bool('latestBorrow'),
+  reviews:       DS.hasMany('review', {async: true})
 });

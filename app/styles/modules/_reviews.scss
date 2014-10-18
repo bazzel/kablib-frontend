@@ -1,0 +1,8 @@
+.reviews {
+  @extend .small;
+  max-height: 200px;
+  overflow-y: scroll;
+  overflow-x: none;
+  margin-top: $grid-gutter-width /2;
+  padding-right: $grid-gutter-width /2;
+}
