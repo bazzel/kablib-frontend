@@ -1,8 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-  queryParams: ['tag'],
+  needs: ['login'],
+  currentUser: Ember.computed.alias('controllers.login.currentUser'),
+  queryParams: ['tag', 'borrowedBy'],
   tag: '',
+  borrowedBy: '',
   uniqueTags: function() {
     var taggedBooks = this.model.rejectBy('tagList', '');
 
@@ -17,7 +20,9 @@ export default Ember.ArrayController.extend({
   }.property('model.@each.tagList'),
   filteredContent: function() {
     var tag = this.get('tag');
+    var borrowedBy = this.get('borrowedBy');
     var books = this.model;
+    var _this = this;
 
     if (tag) {
       books = books.filter(function(book) {
@@ -25,6 +30,19 @@ export default Ember.ArrayController.extend({
       });
     }
 
+    if (borrowedBy) {
+      books = books.filter(function(book) {
+        switch(borrowedBy) {
+          case 'nobody':
+            return !book.get('latestBorrow');
+          case 'anybody':
+            return !!book.get('latestBorrow');
+          case 'me':
+            return book.get('latestBorrow.user') === _this.get('currentUser');
+        }
+      });
+    }
+
     return books;
-  }.property('tag', 'model', 'model.@each')
+  }.property('tag', 'borrowedBy', 'model', '@each', '@each.latestBorrow')
 });
