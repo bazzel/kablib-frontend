@@ -9,7 +9,7 @@ export default Ember.Route.extend({
       var book = this.currentModel;
 
       if (book.get('isNew')) {
-        book.rollback();
+        book.deleteRecord();
       }
     }
   }
