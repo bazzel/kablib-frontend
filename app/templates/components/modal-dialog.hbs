@@ -5,11 +5,11 @@
       <h4 class='modal-title'>{{title}}</h4>
     </div>
     <form {{action 'submit' on='submit'}}>
-      <div class='modal-body'>
+      <div class='modal-body clearfix'>
         {{yield}}
       </div>
       <div class='modal-footer'>
-        <button type='submit' class='btn btn-danger btn-block'>{{submitLabel}}</button>
+        {{#bs-submit-button style=submitStyle}}{{submitLabel}}{{/bs-submit-button}}
       </div>
     </form>
   </div><!-- /.modal-content -->

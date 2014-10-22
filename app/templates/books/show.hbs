@@ -8,54 +8,60 @@
 </div>
 
 {{#unless isEditing}}
-<div class='panel-body'>
-  {{#if isCheckedOut}}
-  {{#if isCheckedOutByCurrentUser}}
-  <div class='alert alert-warning clearfix'>
-    You borrowed this book.
-    <button {{action 'returnBook'}} type='button' class='btn btn-default pull-right'>Return</button>
-  </div>
-  {{else}}
-  <div class='alert alert-warning'>
-    {{borrowedBy.firstName}} borrowed this book.
-  </div>
-  {{/if}}
-  {{/if}}
-  {{#if coverImage}}
-  <img {{bind-attr src=coverImage}} class='cover-image'/>
-  {{/if}}
-  {{#if author}}
-  <p class='text-muted'>by {{author}}</p>
-  {{/if}}
-  <p>
-  {{#each tags}}
-  <span class='label label-default'>{{this}}</span>
-  {{/each}}
-  </p>
-  <p class='clearfix'>{{description}}</p>
-  <hr/>
-  <button {{action 'toggleEditing'}} type='button' class='btn btn-default'>Edit</button>
-  <button {{action 'openModal' 'books/confirmDeletion' this}} type='button' class='btn btn-danger pull-right'>Delete</button>
-  <div class='reviews'>
-    {{#each reviews}}
-      <div class="row">
-        <div class="col-md-12">
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          {{user.firstName}}
-          <span class="pull-right">12 days ago</span>
-          <p>{{description}}</p>
-        </div>
+  <div class='panel-body'>
+
+    {{#if isCheckedOut}}
+      <div class='alert alert-warning clearfix'>
+        {{#if isCheckedOutByCurrentUser}}
+          You borrowed this book.
+          <button {{action 'returnBook'}} type='button' class='btn btn-default pull-right'>Return</button>
+        {{else}}
+          {{borrowedBy.firstName}} borrowed this book.
+        {{/if}}
       </div>
-      <hr/>
-    {{/each}}
+    {{/if}}
+    {{#if coverImage}}
+      <img {{bind-attr src=coverImage}} class='cover-image'/>
+    {{/if}}
+
+    {{#if author}}
+      <p class='text-muted'>by {{author}}</p>
+    {{/if}}
+
+    <p>
+
+      {{#each tags}}
+        <span class='label label-default'>{{this}}</span>
+      {{/each}}
+
+    </p>
+    <p class='clearfix'>{{description}}</p>
+    <hr/>
+    <button {{action 'toggleEditing'}} type='button' class='btn btn-default'>Edit</button>
+    <button {{action 'openModal' 'books/confirmDeletion' this}} type='button' class='btn btn-danger pull-right'>Delete</button>
+    <div class='reviews'>
+
+      {{#each reviews}}
+        <div class='row'>
+          <div class='col-md-2'>
+            {{gravatar-image email=user.email size=46}}
+          </div>
+          <div class='col-md-10'>
+            <div class='clearfix'>
+              <strong>{{user.firstName}}</strong>
+              <span class='pull-right text-muted'>12 days ago</span>
+            </div>
+            <span {{bind-attr class=':glyphicon like:glyphicon-thumbs-up:glyphicon-thumbs-down :pull-left'}}>&nbsp;</span>
+            {{description}}
+          </div>
+        </div>
+        <hr/>
+      {{/each}}
+
+    </div>
   </div>
-</div>
 {{else}}
-<div class='panel-body'>
-  {{render 'books/form' this}}
-</div>
+  <div class='panel-body'>
+    {{render 'books/form' this}}
+  </div>
 {{/unless}}

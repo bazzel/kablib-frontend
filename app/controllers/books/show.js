@@ -36,10 +36,16 @@ export default Ember.ObjectController.extend({
     returnBook: function() {
       var book = this.model;
       var borrow = book.get('latestBorrow');
+      var _this = this;
 
       borrow.set('finishedOn', new Date());
       borrow.save().then(function() {
         book.set('latestBorrow', null);
+        var review = _this.store.createRecord('review', {
+          book: book,
+          user: _this.get('currentUser')
+        });
+        _this.send('openModal', 'reviews/new', review);
       });
     },
     delete: function() {

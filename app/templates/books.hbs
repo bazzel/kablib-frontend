@@ -5,10 +5,10 @@
       <hr/>
       <ul class='list-unstyled'>
         <li class='nav-header'>
-          <a href='javascript://;' data-toggle='collapse' data-target='#userMenu'>
+          {{#link-to 'books' (query-params tag='')}}
             <h5>Tags <i class='glyphicon glyphicon-chevron-down'></i></h5>
-          </a>
-          <ul class='list-unstyled collapse in' id='userMenu'>
+          {{/link-to}}
+          <ul class='list-unstyled collapse in' id='tagsMenu'>
             {{#each uniqueTags}}
             {{#link-to 'books' (query-params tag=this) tagName='li'}}<a href='javascript://'>{{this}}</a>{{/link-to}}
             {{else}}
@@ -18,10 +18,10 @@
         </li>
 
         <li class='nav-header'>
-          <a href='javascript://;' data-toggle='collapse' data-target='#userMenu'>
+          {{#link-to 'books' (query-params borrowedBy='')}}
             <h5>Availability <i class='glyphicon glyphicon-chevron-down'></i></h5>
-          </a>
-          <ul class='list-unstyled collapse in' id='userMenu'>
+          {{/link-to}}
+          <ul class='list-unstyled collapse in'>
             {{#link-to 'books' (query-params borrowedBy='nobody') tagName='li'}}<a href='javascript://'>Available</a>{{/link-to}}
             {{#link-to 'books' (query-params borrowedBy='anybody') tagName='li'}}<a href='javascript://'>Lent</a>{{/link-to}}
             {{#link-to 'books' (query-params borrowedBy='me') tagName='li'}}<a href='javascript://'>Borrowed By Me</a>{{/link-to}}

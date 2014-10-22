@@ -13,8 +13,8 @@ export default Ember.Component.extend({
   },
   actions: {
     submit: function() {
-      this.$().modal('hide');
       this.sendAction('submit');
+      this.$().modal('hide');
     }
   }
 });

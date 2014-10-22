@@ -1,0 +1,13 @@
+{{#modal-dialog title='We would very much appreciate your comments on the book' submitLabel='Submit my review' submitStyle='primary' submit='submit' cancel='closeModal'}}
+<p>Please tell us what you think of <strong>'{{book.title}}'</strong>.</p>
+<div class='form-group'>
+  {{textarea value=description class='form-control' autofocus=true}}
+</div>
+<div class='btn-toolbar pull-right' role='toolbar'>
+  <div class='btn-group'>
+    <button type='button' {{action 'like'}} class='btn btn-default btn-sm'><span class='glyphicon glyphicon-thumbs-up'></span> Like it</button>
+    <button type='button' {{action 'dislike'}} class='btn btn-default btn-sm'><span class='glyphicon glyphicon-thumbs-down'></span> Dislike it</button>
+  </div>
+</div>
+{{/modal-dialog}}
+
