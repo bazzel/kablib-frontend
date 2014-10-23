@@ -2,3 +2,22 @@
 body {
   padding-top: 70px;
 }
+
+.fluid-wrapper {
+  @include container-fixed;
+  @include make-row;
+}
+
+.content-sidebar {
+  @include make-md-column(2);
+}
+
+.content-main {
+  @include make-md-column(7);
+}
+
+.content-detail {
+  @include make-md-column(3);
+  position: fixed;
+  right: 0;
+}

@@ -1,62 +1,59 @@
-<div class='container-fluid'>
-  <div class='row'>
-    <div class='col-md-2 column'>
-      {{#link-to 'books.new' class='btn btn-primary'}}Add a Book{{/link-to}}
-      <hr/>
-      <ul class='list-unstyled'>
-        <li class='nav-header'>
-          {{#link-to 'books' (query-params tag='')}}
-            <h5>Tags <i class='glyphicon glyphicon-chevron-down'></i></h5>
-          {{/link-to}}
-          <ul class='list-unstyled collapse in' id='tagsMenu'>
-            {{#each uniqueTags}}
-            {{#link-to 'books' (query-params tag=this) tagName='li'}}<a href='javascript://'>{{this}}</a>{{/link-to}}
-            {{else}}
-            <li>No tags</li>
-            {{/each}}
-          </ul>
-        </li>
-
-        <li class='nav-header'>
-          {{#link-to 'books' (query-params borrowedBy='')}}
-            <h5>Availability <i class='glyphicon glyphicon-chevron-down'></i></h5>
-          {{/link-to}}
-          <ul class='list-unstyled collapse in'>
-            {{#link-to 'books' (query-params borrowedBy='nobody') tagName='li'}}<a href='javascript://'>Available</a>{{/link-to}}
-            {{#link-to 'books' (query-params borrowedBy='anybody') tagName='li'}}<a href='javascript://'>Lent</a>{{/link-to}}
-            {{#link-to 'books' (query-params borrowedBy='me') tagName='li'}}<a href='javascript://'>Borrowed By Me</a>{{/link-to}}
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class='col-md-7 column'>
-      <table class='table table-hover books'>
-        <tbody>
-        {{#each filteredContent itemController='books/show'}}
-        {{#link-to 'books.show' this tagName='tr' classNameBindings='isDirty:warning'}}
-        <td class='medium'>
-          {{author}}
-        </td>
-        <td>
-          {{#if isCheckedOut}}
-          <span class='label label-warning'>lent</span>
-          {{/if}}
-          {{title}} -
-
-          {{#each tags}}
-          <span class='label label-default'>{{this}}</span>
-          {{/each}}
-
-          <span class='text-muted'>{{description}}</span>
-        </td>
+<div class='fluid-wrapper'>
+  <div class='content-sidebar'>
+    {{#link-to 'books.new' class='btn btn-primary'}}Add a Book{{/link-to}}
+    <hr/>
+    <ul class='list-unstyled'>
+      <li class='nav-header'>
+        {{#link-to 'books' (query-params tag='')}}
+          <h5>Tags <i class='glyphicon glyphicon-chevron-down'></i></h5>
         {{/link-to}}
+        <ul class='list-unstyled collapse in' id='tagsMenu'>
+          {{#each uniqueTags}}
+          {{#link-to 'books' (query-params tag=this) tagName='li'}}<a href='javascript://'>{{this}}</a>{{/link-to}}
+          {{else}}
+          <li>No tags</li>
+          {{/each}}
+        </ul>
+      </li>
+
+      <li class='nav-header'>
+        {{#link-to 'books' (query-params borrowedBy='')}}
+          <h5>Availability <i class='glyphicon glyphicon-chevron-down'></i></h5>
+        {{/link-to}}
+        <ul class='list-unstyled collapse in'>
+          {{#link-to 'books' (query-params borrowedBy='nobody') tagName='li'}}<a href='javascript://'>Available</a>{{/link-to}}
+          {{#link-to 'books' (query-params borrowedBy='anybody') tagName='li'}}<a href='javascript://'>Lent</a>{{/link-to}}
+          {{#link-to 'books' (query-params borrowedBy='me') tagName='li'}}<a href='javascript://'>Borrowed By Me</a>{{/link-to}}
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class='content-main'>
+    <table class='table table-hover books'>
+      <tbody>
+      {{#each filteredContent itemController='books/show'}}
+      {{#link-to 'books.show' this tagName='tr' classNameBindings='isDirty:warning'}}
+      <td class='medium'>
+        {{author}}
+      </td>
+      <td>
+        {{#if isCheckedOut}}
+        <span class='label label-warning'>lent</span>
+        {{/if}}
+        {{title}} -
+
+        {{#each tags}}
+        <span class='label label-default'>{{this}}</span>
         {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div class='col-md-3 column'>
-      {{outlet}}
-    </div>
+
+        <span class='text-muted'>{{description}}</span>
+      </td>
+      {{/link-to}}
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class='content-detail'>
+    {{outlet}}
   </div>
 </div>
-

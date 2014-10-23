@@ -1,7 +1,4 @@
-.book {
-  &.affix {
-    margin-right: $grid-gutter-width /2;
-  }
+.book-details {
   &.panel {
     .panel-title {
       h4 {
@@ -20,5 +17,10 @@
         bottom: $grid-gutter-width /2;
       }
     }
+  }
+  p.description {
+    @include clearfix;
+    max-height: 200px;
+    overflow: scroll;
   }
 }

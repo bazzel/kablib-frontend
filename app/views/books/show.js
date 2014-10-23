@@ -1,5 +1,5 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-  classNames: ['panel', 'panel-default', 'book']
+  classNames: ['panel', 'panel-default', 'book-details']
 });
