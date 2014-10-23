@@ -15,7 +15,7 @@ export default Ember.ArrayController.extend({
       var tagList = taggedBooks.mapBy('tagList').join();
       var tags = tagList.split(/\s*,\s*/);
 
-      return tags.uniq();
+      return tags.uniq().sort();
     }
   }.property('model.@each.tagList'),
   filteredContent: function() {
